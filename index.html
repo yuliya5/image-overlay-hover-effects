@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+<!-- title and meta -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="description" content="Image overlay hover effects with CSS3 transitions. When we hover over an image, a neat transition will occur." />
+<title>Image Overlay Hover Effects With CSS3 Transitions</title>
+    
+<!-- css -->
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/style.css" />
+    
+<!-- js -->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/modernizr.js"></script>
+<script>
+    $(document).ready(function(){
+        if (Modernizr.touch) {
+            // show the close overlay button
+            $(".close-overlay").removeClass("hidden");
+            // handle the adding of hover class when clicked
+            $(".img").click(function(e){
+                if (!$(this).hasClass("hover")) {
+                    $(this).addClass("hover");
+                }
+            });
+            // handle the closing of the overlay
+            $(".close-overlay").click(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                if ($(this).closest(".img").hasClass("hover")) {
+                    $(this).closest(".img").removeClass("hover");
+                }
+            });
+        } else {
+            // handle the mouseenter functionality
+            $(".img").mouseenter(function(){
+                $(this).addClass("hover");
+            })
+            // handle the mouseleave functionality
+            .mouseleave(function(){
+                $(this).removeClass("hover");
+            });
+        }
+    });
+</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+<header>
+    <div id="title" class="container">
+        <h1>Image Overlay Hover Effects</h1>
+        <h2>Image Overlay Hover Effects With CSS3 Transitions</h2>
+    </div>
+</header><!-- /header -->
+
+<!-- IMAGES -->
+<div id="main">
+    <div class="container">
+        <div id="effect-1" class="effects clearfix">
+            <div class="img">
+                <img src="images/family2.jpg" alt="">
+                <div class="overlay one">
+                    <a href="#" class="expand">+</a>
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/family6.jpg" alt="">
+                <div class="overlay two">
+                    <a href="#" class="expand">+</a>
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/family3.jpg" alt="">
+                <div class="overlay three">
+                    <a href="#" class="expand">+</a>
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/family8.jpg" alt="">
+                <div class="overlay four">
+                    <a href="#" class="expand">+</a>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container -->
+</div><!-- #main -->
+
+
+<footer>
+</footer><!-- /footer -->
+
+
+
+</div><!-- /#wrapper -->
+
+
+
+
+</body>
+</html>
